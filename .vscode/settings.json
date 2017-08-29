@@ -8,6 +8,13 @@
         "xiosbase": "cpp",
         "xutility": "cpp",
         "iostream": "cpp",
-        "iomanip": "cpp"
+        "iomanip": "cpp",
+        "istream": "cpp",
+        "type_traits": "cpp",
+        "utility": "cpp",
+        "xlocmon": "cpp",
+        "xlocnum": "cpp",
+        "xloctime": "cpp",
+        "ios": "cpp"
     }
 }

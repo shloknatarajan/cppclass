@@ -32,7 +32,7 @@ void main() {
 
     // Questions
     cout << "Name: ";
-    cin >> name;
+    getline(cin, name);
     cout << "\nAge: ";
     cin >> age;
     cout << "\nOccupation: ";
@@ -40,18 +40,17 @@ void main() {
 
     // Print Everything
     cout << "\nTIcket Sales for: " << name << "\nOccupation: " << occupation << " \nAge: " << age << "\n\n";
-    cout << "**********************\n" << "Ticket Price\t\t" << "Number Sold";
-    cout <<"\n************************\n";
+    cout << setfill('=') << setw(36) << right << "=" << endl;
+    cout << setfill(' ') << left << setw(18) << "Ticket Price" << right << setw(18) << "Number Sold" << endl;
+    cout << setfill('=') << setw(36) << right << "=" << endl;
+    cout << setfill(' ');
     
     for (int i=0; i < 8; i+= 2) {
-        cout << setprecision(2);
-        cout << fixed;
-        cout << sales[i];
-        cout<< setprecision(0);
-        cout << "\t\t" << sales[i+1] << endl;
+        cout << setprecision(2) << fixed << left << setw(18) << sales[i];
+        cout << setprecision(0) << right << setw(18) << sales[i+1] << endl;
     }
 
-    cout << "************************\n";    
+    cout << setfill('=') << setw(36) << right << "=" << endl;
     cout << setprecision(2);
     cout << fixed;
     cout << "GROSS REVENUE: " << rev;
