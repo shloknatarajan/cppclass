@@ -1,0 +1,6 @@
+-------------------Property Tax Data--------------------
+________________________________________________________
+Assesed Value:                                  10000.00
+Taxable Amount:                                  9200.00
+Tax Rate for each $100.00:                          1.05
+Property Tax:                                      96.60
