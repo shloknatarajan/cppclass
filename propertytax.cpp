@@ -16,7 +16,7 @@ void main() {
     tax = val * 0.92;
 
     fout.open("property.txt");
-    if (fout.is_open()){
+    if (fout.is_open()) {
         fout << "-------------------Property Tax Data--------------------" << endl;
         fout << "________________________________________________________" << endl;
 
@@ -32,4 +32,7 @@ void main() {
         fout << setw(28) << left << "Property Tax: ";
         fout << setw(28) << right << (tax / 100) * 1.05 << endl; 
     }
+
+    fin.close();
+    fout.close();
 }

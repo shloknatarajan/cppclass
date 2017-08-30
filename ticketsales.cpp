@@ -56,6 +56,6 @@ void main() {
     cout << "GROSS REVENUE: " << rev;
 
 
-
-
+    fin.close();
+    fout.close();
 }
