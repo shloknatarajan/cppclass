@@ -36,8 +36,9 @@ void main() {
     cout << "\nAge: ";
     cin >> age;
     cout << "\nOccupation: ";
-    cin >> occupation;
-
+    getline(cin, occupation);    
+    getline(cin, occupation);
+    
     // Print Everything
     cout << "\nTIcket Sales for: " << name << "\nOccupation: " << occupation << " \nAge: " << age << "\n\n";
     cout << setfill('=') << setw(36) << right << "=" << endl;
