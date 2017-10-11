@@ -1,0 +1,45 @@
+Account: 46728	Type: Savings	Current balance: $2808.00
+Account earned 4% interest.
+
+Account: 87324	Type: Checking	Current balance: $8073.45
+Account earned 5% interest.
+
+Account: 79873	Type: Savings	Current balance: $790.00
+Account was chargd a $10.00 fee for being below minimum balance.
+
+Account: 89832	Type: Checking	Current balance: $3090.00
+Account earned 3% interest.
+
+Account: 98322	Type: Checking	Current balance: $725.00
+Account was chargd a $25.00 fee for being below minimum balance.
+
+Account: 46728	Type: Savings	Current balance: $2808.00
+Account earned 4% interest.
+
+Account: 87324	Type: Checking	Current balance: $8073.45
+Account earned 5% interest.
+
+Account: 79873	Type: Savings	Current balance: $790.00
+Account was chargd a $10.00 fee for being below minimum balance.
+
+Account: 89832	Type: Checking	Current balance: $3090.00
+Account earned 3% interest.
+
+Account: 98322	Type: Checking	Current balance: $725.00
+Account was chargd a $25.00 fee for being below minimum balance.
+
+Account: 46728	Type: Savings	Current balance: $2808.00
+Account earned 4% interest.
+
+Account: 87324	Type: Checking	Current balance: $8073.45
+Account earned 5% interest.
+
+Account: 79873	Type: Savings	Current balance: $790.00
+Account was chargd a $10.00 fee for being below minimum balance.
+
+Account: 89832	Type: Checking	Current balance: $3090.00
+Account earned 3% interest.
+
+Account: 98322	Type: Checking	Current balance: $725.00
+Account was chargd a $25.00 fee for being below minimum balance.
+
