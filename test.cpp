@@ -1,5 +1,6 @@
 #include <iostream>
 #include <cmath>
+#include <string>
 using namespace std;
 
 enum mathStudent {John, Bill, Cindy, Lisa, Ron};
@@ -12,7 +13,14 @@ int myFunc(int x, int y) {
 }
 
 void main() {
-    int x = 0;
-    int y = 0;
-    cin >> myFunc(x, y);
+    string str = "goofy";
+    string newStr ="";
+
+    for(int i=0; i < str.length(); i++) {
+        cout << "str[" << i << "] + " << newStr;
+        newStr=str[i] + newStr;
+        cout << "= " << newStr << endl;
+    }
+
+    cout << "newStr: " << newStr << endl;
 }
