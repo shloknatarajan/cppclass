@@ -13,14 +13,11 @@ int myFunc(int x, int y) {
 }
 
 void main() {
-    string str = "goofy";
-    string newStr ="";
-
-    for(int i=0; i < str.length(); i++) {
-        cout << "str[" << i << "] + " << newStr;
-        newStr=str[i] + newStr;
-        cout << "= " << newStr << endl;
+ 
+    char name[8] = "shelly";
+    char str2[8] = "abcdefg";
+    int j = 0;
+    while(j < 8) {
+        cout << name[j++] << "_";
     }
-
-    cout << "newStr: " << newStr << endl;
 }
