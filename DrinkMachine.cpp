@@ -1,57 +1,78 @@
-#include <string>
 #include <iostream>
-#include <stdlib.h>
+#include <fstream>
+#include <string>
+#include <iomanip>
 
 using namespace std;
 
-int main() {
-	struct Drink {
-		string name;
-		double cost;
-		int count;
-	};
+struct Drink {
+    string name;
+    double price;
+    int available;
+};
 
-	struct Drink drinks[5] = {
-		{ "Cola", 		.75, 20 },
-		{ "Root Beet", 	.75, 20 },
-		{ "Lemon-Lime", .75, 20 },
-		{ "Grape Soda",	.80, 20 },
-		{ "Cream Soda", .80, 20 }
-	};
+Drink allDrinks[5] = {{"Cola", 0.75, 20},
+                      {"Root Beer", 0.75, 20},
+                      {"Lemon-Lime", 0.75, 20},
+                      {"Grape Soda", 0.80, 20},
+                      {"Cream Soda", 0.80, 20}, 
+};
 
-	int choice;
-	double money;
-	double earnings;
+void displayDrinks();
+void chooseDrink();
+void calcChange(Drink d, double paid);
 
-	while(true) {
-		for (int i = 0; i < 5; i++) {
-			cout << i + 1 << " - " << drinks[i].name << endl;
-		}
-		cout << "6 - Exit" << endl;
-		cout << "Choice: ";
-		cin >> choice;
-		if (choice == 6) {
-			cout << endl << "Total earnt today is $" << earnings << "." << endl;
-			exit(0);
-		}
-
-		money = 0;
-		while (money == 0 || money < drinks[choice].cost) {
-			cout << "Money: ";
-			cin >> money;
-
-			if (money < drinks[choice].cost)
-				cout << "Not enough inserted, returning money" << endl;
-		}
-
-		drinks[choice].count--;
-		earnings += drinks[choice].cost;
-
-		cout << "Enjoy your drink!" << endl;
-		cout << "Your change is $" << money - drinks[choice].cost << "." << endl;
-		cout << "There are " << drinks[choice].count << " of type " << drinks[choice].name << " left." << endl;
-		cout << endl << endl << endl;
-	}
-
-	return 0;
+void displayDrinks() {
+    for (int i = 0; i < 5; i++) {
+        cout << (i+1) << ")  ";
+        cout << setw(20) << left << allDrinks[i].name;
+        cout << fixed << showpoint << setprecision(2) << allDrinks[i].price << endl;
+    }
+    cout << "6)  Leave the drink machine\n";
 }
+
+void chooseDrink() {
+    int choice;
+    double money;
+    cout << "Choose one: ";
+    cin >> choice;
+
+    if (choice > 6 || choice < 1) {
+        cout << "\nInvalid choice\n";
+        chooseDrink();
+    }
+
+    if (choice == 6) {
+        exit(EXIT_SUCCESS);
+    }
+
+    if (allDrinks[choice].available < 1) {
+        cout << "\nSold Out!\n";
+        chooseDrink();
+    }
+
+    cout << "\nEnter an amount of money: ";
+    cin >> money;
+
+    if (money - allDrinks[choice].price < 0) {
+        cout << "\nInsufficient Funds\n";
+        displayDrinks();
+        chooseDrink();
+    } else {
+        cout <<"Thump, thump, thump. Enjoy your beverage!\n";
+        cout << "\nChange calculated: " << (money - allDrinks[choice].price) << endl;
+        cout << "Your change, " << (money - allDrinks[choice].price) << " has dropped into the dispenser" << endl;
+        allDrinks[choice].available--;
+        cout << "There are " << allDrinks[choice].available << " drinks of that type left.\n";
+    }
+}
+
+void main() {
+    while (true) {
+        displayDrinks();
+        chooseDrink();
+    }
+}
+
+
+
