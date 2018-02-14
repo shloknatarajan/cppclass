@@ -84,7 +84,7 @@ void menu()
 		break;
 
 	case '4':
-		//result=search(myCollection);
+		result=search(myCollection);
 		print(result);
 		break;
 
@@ -155,6 +155,32 @@ void print(vector <album> v)
 
 	menu();
 }
+
+void printSpecific(vector <album> v, vector <int> indexes)
+{
+	cout << "\n\nYOUR COLLECTION" << endl;
+
+	cout << setprecision(2) << fixed << showpoint;
+	cout << setfill('-') << setw(80) << "-" << endl;
+	cout << setfill(' ');
+
+	for (int i = 0; i<v.size(); i++)
+	{
+		for(int j = 0; j < indexes.size(); j++) {
+			if (i==indexes[j]) {
+				cout << setw(20) << v[i].group << setw(20) << v[i].name
+				<< setw(20) << v[i].label << setw(7) << v[i].year
+				<< setw(7) << "$" << v[i].price << endl;
+			}
+		}
+		
+	}
+
+	cout << endl << endl;
+
+	menu();
+}
+
 //*********************************************
 
 vector <album> firstN(int n, vector <album> v)
@@ -175,11 +201,11 @@ vector <album> firstN(int n, vector <album> v)
 }
 
 void addOne(vector<album> &v) {
-	string artist, name, label;
+	string group, name, label;
 	int year;
 	double price;
-	cout << "Artist: ";
-	getline(cin, artist);
+	cout << "Group: ";
+	getline(cin, group);
 
 	cout << "Album Name: ";
 	getline(cin, name);
@@ -193,14 +219,13 @@ void addOne(vector<album> &v) {
 	cout << "Price: ";
 	cin >> price;
 
-	v.push_back((album){
-		artist, name, label, year, price
-	});
+	v.resize(v.size()+1);
+	v[v.size()-1] = {group, name, label, year, price};
 }
 
 void updateFile(vector <album> v) {
 	ofstream fout;
-	fout.open("./data/albums.txt");
+	fout.open("albums.txt");
 
 	for (int i = 0; i < v.size(); i++) {
 		if (i != 0)
@@ -214,4 +239,86 @@ void updateFile(vector <album> v) {
 
 	fout.close();
 	cout << "Wrote " << v.size() << " albums to file." << endl;
+}
+
+vector <album> search(vector <album> v) {
+	int c1;
+	string s;
+	double max;
+	int index, yr;
+	vector <album> results;
+
+	cout << "What do you want to search for?" << endl;
+	cout << "1. Artist\n2. Album Name\n3. Label\n4. Year\n5. Price\n";
+
+	cin >> c1;
+	switch(c1) {
+		case 1:
+			cout << "What artist are you looking for\n";
+			cin.ignore();
+			getline(cin, s);
+			index = 0;
+			for(int i = 0; i < v.size(); i++) {
+				if(v[i].group == s) {
+					results.push_back(v[i]);
+				}
+			}
+			return results;
+			break;
+
+		case 2:
+			cout << "What album name are you looking for?\n";
+			cin.ignore();
+			getline(cin, s);
+			index = 0;
+			for(int i = 0; i < v.size(); i++) {
+				if(v[i].name == s) {
+					results.push_back(v[i]);
+				}
+			}
+			return results;
+			break;
+		
+		case 3:
+			cout << "What label are you looking for?\n";
+			cin.ignore();
+			getline(cin, s);
+			index = 0;
+			for(int i = 0; i < v.size(); i++) {
+				if(v[i].label == s) {
+					results.push_back(v[i]);
+				}
+			}
+			return results;
+			break;
+
+		case 4:
+			cout << "What year are you looking for?\n";
+			cin.ignore();
+			cin >> yr;
+			index = 0;
+			for(int i = 0; i < v.size(); i++) {
+				if(v[i].year == yr) {
+					results.push_back(v[i]);
+				}
+			}
+			return results;
+			break;
+		
+		case 5:
+			cout <<"What is your max price?\n";
+			cin >> max;
+			index = 0;
+			for (int i = 0; i < v.size(); i++) {
+				if (v[i].price <= max) {
+					results.push_back(v[i]);
+				}
+			}
+			return results;
+			break;
+		
+		default:
+			cout <<"\nTry Again\n";
+			search(v);
+	}
 }
