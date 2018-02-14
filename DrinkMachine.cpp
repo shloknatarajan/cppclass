@@ -4,7 +4,6 @@
 #include <iomanip>
 
 using namespace std;
-
 struct Drink {
     string name;
     double price;
@@ -17,6 +16,7 @@ Drink allDrinks[5] = {{"Cola", 0.75, 20},
                       {"Grape Soda", 0.80, 20},
                       {"Cream Soda", 0.80, 20}, 
 };
+double total = 0;
 
 void displayDrinks();
 void chooseDrink();
@@ -36,16 +36,18 @@ void chooseDrink() {
     double money;
     cout << "Choose one: ";
     cin >> choice;
-
+    
     if (choice > 6 || choice < 1) {
         cout << "\nInvalid choice\n";
         chooseDrink();
     }
 
     if (choice == 6) {
+        cout << "\nTotal Earnings: $" << total;
         exit(EXIT_SUCCESS);
     }
 
+    choice--;
     if (allDrinks[choice].available < 1) {
         cout << "\nSold Out!\n";
         chooseDrink();
@@ -59,6 +61,7 @@ void chooseDrink() {
         displayDrinks();
         chooseDrink();
     } else {
+        total += allDrinks[choice].price;
         cout <<"Thump, thump, thump. Enjoy your beverage!\n";
         cout << "\nChange calculated: " << (money - allDrinks[choice].price) << endl;
         cout << "Your change, " << (money - allDrinks[choice].price) << " has dropped into the dispenser" << endl;
