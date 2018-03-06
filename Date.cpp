@@ -39,27 +39,15 @@ string Date::getArrayMonth(int a) {
 
 
 void Date::setMonth(int m) {
-    if (m > 12 || m < 1) {
-        cout << "Invalid Month" << endl;
-    } else {
-        month = m;
-    }
+    month = m;
 }
 
 void Date::setDay(int d) {
-    if (d > 31 || d < 1) {
-        cout << "Invalid Day" << endl;
-    } else {
-        day = d;
-    }
+    day = d;
 }
 
 void Date::setYear(int y) {
-    if (y < 100) {
-        cout << "Invalid Year" << endl;
-    } else {
-        year = y;
-    }
+    year = y;
 }
 
 int Date::getMonth() {
@@ -86,8 +74,43 @@ void Date::printAll3() {
     cout << getDay() << " " << getArrayMonth(getMonth()) << " " << getYear() << endl;
 }
 
+void getData(Date & d) {
+    int m, da, y;
+
+    cout << "\nMonth: ";
+    cin >> m;
+    if (m > 12 || m < 1) {
+        cout << "Invalid Month" << endl;
+        getData(d);
+    } else {
+        d.setMonth(m);
+    }
+
+    cout << "\nDay: ";
+    cin >> da;
+    if (da > 31 || da < 1) {
+        cout << "Invalid Day" << endl;
+        getData(d);
+    } else {
+        d.setDay(da);
+    }
+
+    cout << "\nYear: ";
+    cin >> y;
+    if (y < 100) {
+        cout << "Invalid Year" << endl;
+        getData(d);
+    } else {
+        d.setYear(y);
+    }
+
+    cout << endl;
+}
+
 int main() {
-    Date d = Date(12, 23, 1999);
+    Date d = Date(12, 23, 1);
+    getData(d);
+    cout << "\n3 Different Print outs: \n";
     d.printAll1();
     d.printAll2();
     d.printAll3();
