@@ -79,6 +79,7 @@ void Plane::printAllData() {
 }
 
 int main() {
+    // Harcoded input
     Plane aeroplane = Plane(747, 35, 9, "Delta");
     aeroplane.printAllData();
 
