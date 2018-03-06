@@ -63,7 +63,7 @@ void printCheck() {
     double total = 0;
     for (int i = 0; i < selections.size(); i++) {
         cout << setw(20) << left << selections[i].item;
-        cout << fixed << showpoint <<setprecision(2) << "$" << selections[i].price << endl;
+        cout << fixed << showpoint << setprecision(2) << "$" << selections[i].price << endl;
         total += selections[i].price;
     }
 
